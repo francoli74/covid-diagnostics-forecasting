@@ -1,0 +1,4 @@
+[model]
+prediction_length = 7
+context_length = 3
+train_split = "2023/07/12"

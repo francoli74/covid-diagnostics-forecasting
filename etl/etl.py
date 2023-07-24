@@ -75,4 +75,5 @@ def supplement_missing_date(df: pd.DataFrame, df_map: pd.DataFrame) -> pd.DataFr
 
     df_supp = pd.merge(df_states_date, df, on=["date", "state_name"], how="left")
     df_supp = pd.merge(df_supp, df_map, on="state_name", how="left").fillna(0)
-    return df_supp.sort_values(by=["state_name", "date"])
+    # df_supp["fema_region"] = df_supp["fema_region"].astype("category")
+    return df_supp.sort_values(by=["state_name", "date"]).reset_index(drop=True)
