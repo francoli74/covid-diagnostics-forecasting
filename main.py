@@ -1,6 +1,7 @@
 from etl.etl import etl
-from model.train import train_test_split, model_train
+from model.evaluate import evaluate
 from model.predict import predict
+from model.train import model_train, train_test_split
 from utils.utils import read_config
 
 
@@ -12,9 +13,9 @@ def main() -> None:
     df = etl()
     ds_train, ds_test = train_test_split(df, train_split)
     predictor = model_train(df, ds_train, prediction_length)
-    forecast_it, ts_it = predict(predictor, ds_test)
-    print(forecast_it)
-    return forecast_it, ts_it
+    forecasts, tss = predict(predictor, ds_test)
+    rmse = evaluate(tss, forecasts)
+    print(f"RMSE: {rmse}")
 
 
 if __name__ == "__main__":

@@ -1,9 +1,9 @@
 from typing import List, Tuple
+
 import gluonts
 import pandas as pd
 from gluonts.dataset.pandas import PandasDataset
 from gluonts.torch.model.deepar.estimator import DeepAREstimator
-
 
 Predictor = gluonts.torch.model.predictor.PyTorchPredictor
 GluontsDataset = gluonts.dataset.pandas.PandasDataset
